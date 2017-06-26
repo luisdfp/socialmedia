@@ -17,6 +17,7 @@ body {
 	width: 240px;
 	float: left;
 	margin: 10px;
+    word-wrap: break-word;
 }
 
 
