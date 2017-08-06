@@ -246,3 +246,10 @@ span.cntr.label.label-info {
 	text-align:left; 
   color: #858585;	
 }
+
+.noisevictim {
+    width: 100px;
+    float: left;
+    margin: 10px;
+    word-wrap: break-word;
+}
