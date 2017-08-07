@@ -30,5 +30,18 @@ if(isset($_SESSION["case"])){
 // }
 
 /*Testing*/
-require("case2.php");
+switch($qstr_values['condition']){
+    case 1:
+        require("case1.php");
+        break;
+    case 2:
+        require("case2.php");
+        break;
+    case 3:
+        require("case3.php");
+        break;
+    default:
+        require("case1.php");
+        break;    
+}
 /*********/

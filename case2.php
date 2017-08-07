@@ -14,7 +14,7 @@ If you don't have experience with programming, it is important that you alter on
 --> 
 
 <meta charset="utf-8">
-<title>Group 2</title>
+<title>Condition 2</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Pragma" content="no-cache">
@@ -177,8 +177,8 @@ You can edit the instructions text. The prompt to try and form an impression of 
   <img class="load" src='ajax-loader.gif' id="loader">
   <div id="msg_all_done" style="display:none;">
   <br>
-  	<b>All participants are now connected and you are ready to proceed.</b><br><br>
-  	<button type="submit"  id="submit_fb_login">Continue</button>
+  	<b>Alle Teilnehmer sind nun miteinander verbunden und Sie können fortfahren.</b><br><br>
+  	<button type="submit"  id="submit_fb_login">Weiter</button>
   </div>
 </div>
 
@@ -231,10 +231,15 @@ You can edit the instructions text.
 </div>
 
 <div id="imagination_task" class="instr" style="display:none;">
-  Bitte erinnern Sie sich an eine Person, die Ihnen als erstes in den Sinn kommt. Zu der Sie gehen würden, wenn Sie Hilfe benötigen z.B. in Zeiten in denen Dinge nicht gut laufen. Wenn irgendein Problem vorliegt, oder wenn Sie sich einfach nicht gut fühlen. 
-  Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
-  <br><br><br>
-  <button type="submit" id="submit_imagination_task">Weiter</button>
+  <div class="well" style="font-size: 18px">
+    Bitte erinnern Sie sich an eine Person, die Ihnen als erstes in den Sinn kommt. Zu der Sie gehen würden, wenn Sie Hilfe benötigen z.B. in Zeiten in denen Dinge nicht gut laufen. Wenn irgendein Problem vorliegt, oder wenn Sie sich einfach nicht gut fühlen. 
+    <br/><br/>
+    Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
+  </div>
+  <div class="pull-right">
+    <button type="submit" id="submit_imagination_task">Weiter</button>
+  </div>
+  
 </div>
 
 <script type="template/text" id="noisevictimtmp">
@@ -256,20 +261,18 @@ You can edit the instructions text.
   {{#posts}}
     
     <div class="entry">
-      <div class="tophalf">
-
-        <img src="{{avatar}}" class="avatar">
-        <h3>{{username}}</h3>
-
-        <div class="main">
-          <p>{{text}}</p>
-        </div>
-
-        <br style="clear:both;">
-
-      </div>	
+    <div class="tophalf">
+    	<img src="{{avatar}}" class="avatar">
+    	<h3>{{username}}</h3>
+    	<div class="main">
+    		<p>{{text}}</p>
+    	</div>
+    	<br style="clear:both;">
+    </div>	
+    <div class="bottomhalf">
+    	Likes <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
     </div>
-
+    </div>
   {{/posts}}  
 </script>
 
@@ -329,8 +332,8 @@ $(function () {
 
     // **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
-    //settings.tasklength = 180000; 
-    settings.tasklength = 10000;
+    settings.tasklength = 180000; 
+    //settings.tasklength = 10000;
 
     // **Number** **of** **"likes"**    
     // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
@@ -353,7 +356,7 @@ $(function () {
 
     // Usernames by which the participant will receive "likes"
     // If group member names are changed, these should be changed accordingly.
-    settings.likes_by = ['John', 'AncaD', 'Sarah', 'Arjen', 'Jane', 'George', 'Dan', 'Heather', 'Ky'];
+    settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
   // -------------------
@@ -442,7 +445,7 @@ $(function () {
     $('#text').show();
 
     $("#description").keyup(function () {
-      $("#count").text("Characters left: " + (400 - $(this).val().length));
+      $("#count").text("Verbleibende Zeichen: " + (400 - $(this).val().length));
     });
 
     $('#submit_text').on('click', function () {
@@ -611,14 +614,11 @@ $(function () {
       $('#task').hide();
       init_imagination_task();
 
-      $(window).unbind('beforeunload');
       //redirectToSurvey();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function () {
-
-      $(window).unbind('beforeunload');
+    setTimeout(function () {      
 
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
@@ -637,6 +637,8 @@ $(function () {
   }
 
   function init_imagination_task() {
+    $(window).unbind('beforeunload');
+
     $('#imagination_task').show();
     $('#submit_imagination_task').click(function(){
       redirectToSurvey();
@@ -830,7 +832,7 @@ $(function () {
 
   // Start with the intro slide
   init_intro();
-  //init_regulator_page();
+  //init_imagination_task();
 });
 </script>
 </html>

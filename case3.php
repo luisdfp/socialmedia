@@ -14,7 +14,7 @@ If you don't have experience with programming, it is important that you alter on
 --> 
 
 <meta charset="utf-8">
-<title>Case 1</title>
+<title>Condition 3</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Pragma" content="no-cache">
@@ -177,8 +177,8 @@ You can edit the instructions text. The prompt to try and form an impression of 
   <img class="load" src='ajax-loader.gif' id="loader">
   <div id="msg_all_done" style="display:none;">
   <br>
-  	<b>All participants are now connected and you are ready to proceed.</b><br><br>
-  	<button type="submit"  id="submit_fb_login">Continue</button>
+  	<b>Alle Teilnehmer sind nun miteinander verbunden und Sie können fortfahren.</b><br><br>
+  	<button type="submit"  id="submit_fb_login">Weiter</button>
   </div>
 </div>
 
@@ -440,7 +440,7 @@ $(function () {
     $('#text').show();
 
     $("#description").keyup(function () {
-      $("#count").text("Characters left: " + (400 - $(this).val().length));
+      $("#count").text("Verbleibende Zeichen: " + (400 - $(this).val().length));
     });
 
     $('#submit_text').on('click', function () {

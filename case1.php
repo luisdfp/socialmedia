@@ -14,7 +14,7 @@ If you don't have experience with programming, it is important that you alter on
 --> 
 
 <meta charset="utf-8">
-<title>Group 1</title>
+<title>Condition 1</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Pragma" content="no-cache">
@@ -177,8 +177,8 @@ You can edit the instructions text. The prompt to try and form an impression of 
   <img class="load" src='ajax-loader.gif' id="loader">
   <div id="msg_all_done" style="display:none;">
   <br>
-  	<b>All participants are now connected and you are ready to proceed.</b><br><br>
-  	<button type="submit"  id="submit_fb_login">Continue</button>
+  	<b>Alle Teilnehmer sind nun miteinander verbunden und Sie können fortfahren.</b><br><br>
+  	<button type="submit"  id="submit_fb_login">Weiter</button>
   </div>
 </div>
 
@@ -230,11 +230,6 @@ You can edit the instructions text.
 
 </div>
 
-<div id="imagination_task" class="instr" style="display:none;">
-Bitte erinnern Sie sich an eine Person, die Ihnen als erstes in den Sinn kommt. Zu der Sie gehen würden, wenn Sie Hilfe benötigen z.B. in Zeiten in denen Dinge nicht gut laufen. Wenn irgendein Problem vorliegt, oder wenn Sie sich einfach nicht gut fühlen. 
-Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
-</div>
-
 <script type="template/text" id="noisevictimtmp">
   {{#posts}}
     
@@ -254,23 +249,20 @@ Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
   {{#posts}}
     
     <div class="entry">
-      <div class="tophalf">
-
-        <img src="{{avatar}}" class="avatar">
-        <h3>{{username}}</h3>
-
-        <div class="main">
-          <p>{{text}}</p>
-        </div>
-
-        <br style="clear:both;">
-
-      </div>	
+    <div class="tophalf">
+    	<img src="{{avatar}}" class="avatar">
+    	<h3>{{username}}</h3>
+    	<div class="main">
+    		<p>{{text}}</p>
+    	</div>
+    	<br style="clear:both;">
+    </div>	
+    <div class="bottomhalf">
+    	Likes <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
     </div>
-
+    </div>
   {{/posts}}  
 </script>
-
 
 <script type="template/text" id="otherstmp">
   {{#posts}}
@@ -327,15 +319,16 @@ $(function () {
 
     // **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
-    //settings.tasklength = 180000; 
-    settings.tasklength = 10000;
+    settings.tasklength = 180000; 
+    //settings.tasklength = 10000; /*for testing*/
 
     // **Number** **of** **"likes"**    
     // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
     // In cases with only 1 "like," a second "like" is added with time point 9999999. This "like" is added for programming purposes and is never executed, as it is outside the task time
 
     // In condition 1, the participant will receive 1 like at the following timepoint (in ms). Default: [12000, 9999999]
-    settings.condition_1_likes = [12000, 9999999];
+    //settings.condition_1_likes = [12000, 9999999];
+    settings.condition_1_likes = [9999999, 9999999];
 
     // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
     settings.condition_2_likes = [10000, 15000, 35000, 80000, 1320000, 150000];
@@ -351,7 +344,7 @@ $(function () {
 
     // Usernames by which the participant will receive "likes"
     // If group member names are changed, these should be changed accordingly.
-    settings.likes_by = ['John', 'AncaD', 'Sarah', 'Arjen', 'Jane', 'George', 'Dan', 'Heather', 'Ky'];
+    settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
   // -------------------
@@ -440,7 +433,7 @@ $(function () {
     $('#text').show();
 
     $("#description").keyup(function () {
-      $("#count").text("Characters left: " + (400 - $(this).val().length));
+      $("#count").text("Verbleibende Zeichen: " + (400 - $(this).val().length));
     });
 
     $('#submit_text').on('click', function () {
@@ -556,23 +549,24 @@ $(function () {
     reorder();
 
     // When user receives likes
-    $('.userslikes').each(function () {
-      var that = $(this);
-      var usernames = $(this).data('usernames').split(",");
-      var times = $(this).data('likes').split(",");
+    // $('.userslikes').each(function () {
+    //   console.log($(this))
+    //   var that = $(this);
+    //   var usernames = $(this).data('usernames').split(",");
+    //   var times = $(this).data('likes').split(",");
 
-      for (var i = 0; i < times.length; i++) {
-        times[i] = +times[i];
+    //   for (var i = 0; i < times.length; i++) {
+    //     times[i] = +times[i];
 
-        themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
+    //     themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
 
-        setTimeout(function (themsg) {
-          that.text(parseInt(that.text()) + 1);
-          alertify.success(themsg)
+    //     setTimeout(function (themsg) {
+    //       that.text(parseInt(that.text()) + 1);
+    //       alertify.success(themsg)
 
-        }, times[i], themsg);
-      }
-    });
+    //     }, times[i], themsg);
+    //   }
+    // });
 
     // When others receive likes
     $('.otherslikes').each(function () {
