@@ -45,7 +45,7 @@ If you don't have experience with programming, it is important that you alter on
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
 <script src="shortcut.js"></script>
 <!--<script src="main.js"></script>-->
-<script type="text/javascript" src="profiles.json"></script>
+<script type="text/javascript" src="profiles_case3.json"></script>
 
 </head>
 
@@ -63,17 +63,20 @@ If you don't have experience with programming, it is important that you alter on
 You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 
 */ 
---> <h3>Willkommen zu diesem Teil der Studie</h3>
+--> <h3>Willkommen zu dieser Studie</h3>
 
   <br>
-  Als Erstes werden alle Teilnehmer der Studie persönliche "Avatare" <br>
-  auswählen und einen kurzen Text schreiben, um sich selbst vorzustellen.
+  Sie werden zusammen mit anderen Personen, mit denen Sie über das Internet verbunden <br>
+  sein werden, eine Reihe einfacher Aufgaben lösen. 
   <br><br>
-  Im Anschluss haben Sie 3 Minuten, um Zeit mit den anderen Personen zu verbringen. <br>
-  Während dieser Zeit können Sie die kurzen Vorstellungstexte der anderen Personen <br>
-  lesen und mit der Vergabe von „Likes“ darauf reagieren.
+  In einem ersten Schritt werden alle Teilnehmer der Studie persönliche “Avatare” auswählen <br>
+  und einen kurzen Text schreiben, um sich selbst vorzustellen.
+  <br><br> 
+  Bevor Sie mit den Aufgaben beginnen, werden Sie drei Minuten mit den anderen Teilnehmern <br>
+  verbringen. Während dieser Zeit können Sie die kurzen Vorstellungstexte der anderen Teilnehmer <br> 
+  lesen und untereinander darauf reagieren.
   <br><br>
-  Spezifischer Instruktionen werden dann folgen.<br><br><br>
+  Spezifischere Instruktionen werden dann folgen.<br><br><br>
   <button type="submit" id="submit_intro">Weiter</button>
 </div>
 
@@ -200,6 +203,19 @@ You can edit the instructions text.
 	</div>
 </div>
 
+<div id="final_msg" class="instr" style="display:none;">
+  <div class="well">
+    <h3>Gruppen für Teamarbeit</h3>
+    Sie und Max haben keine Likes von den anderen Personen bekommen, sodass Sie für die spätere <br/>
+    Gruppenaufgabe als Zweierteam zusammenarbeiten werden. 
+    <br/><br/>
+  </div>
+  <div class="pull-right">
+    <button type="submit" id="submit_final_msg">Weiter</button>
+  </div>
+  
+</div>
+
 <div id="regulator_page" style="display:none;" class="instr">
   <h3>Send a noise blast!</h3>  
   <p>In this page, you can choose to send a noise blast to one of the other participants.</p>
@@ -230,11 +246,6 @@ You can edit the instructions text.
 
 </div>
 
-<div id="imagination_task" class="instr" style="display:none;">
-Bitte erinnern Sie sich an eine Person, die Ihnen als erstes in den Sinn kommt. Zu der Sie gehen würden, wenn Sie Hilfe benötigen z.B. in Zeiten in denen Dinge nicht gut laufen. Wenn irgendein Problem vorliegt, oder wenn Sie sich einfach nicht gut fühlen. 
-Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
-</div>
-
 <script type="template/text" id="noisevictimtmp">
   {{#posts}}
     
@@ -254,23 +265,20 @@ Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
   {{#posts}}
     
     <div class="entry">
-      <div class="tophalf">
-
-        <img src="{{avatar}}" class="avatar">
-        <h3>{{username}}</h3>
-
-        <div class="main">
-          <p>{{text}}</p>
-        </div>
-
-        <br style="clear:both;">
-
-      </div>	
+    <div class="tophalf">
+    	<img src="{{avatar}}" class="avatar">
+    	<h3>{{username}}</h3>
+    	<div class="main">
+    		<p>{{text}}</p>
+    	</div>
+    	<br style="clear:both;">
+    </div>	
+    <div class="bottomhalf">
+    	Likes <span class="badge badge-custom userslikes" data-likes="{{likes}}" data-usernames="{{usernames}}">0</span>
     </div>
-
+    </div>
   {{/posts}}  
 </script>
-
 
 <script type="template/text" id="otherstmp">
   {{#posts}}
@@ -327,15 +335,16 @@ $(function () {
 
     // **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
-    //settings.tasklength = 180000; 
-    settings.tasklength = 10000;
+    settings.tasklength = 180000; 
+    //settings.tasklength = 10000; /*for testing*/
 
     // **Number** **of** **"likes"**    
     // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
     // In cases with only 1 "like," a second "like" is added with time point 9999999. This "like" is added for programming purposes and is never executed, as it is outside the task time
 
     // In condition 1, the participant will receive 1 like at the following timepoint (in ms). Default: [12000, 9999999]
-    settings.condition_1_likes = [12000, 9999999];
+    //settings.condition_1_likes = [12000, 9999999];
+    settings.condition_1_likes = [9999999, 9999999];
 
     // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
     settings.condition_2_likes = [10000, 15000, 35000, 80000, 1320000, 150000];
@@ -351,7 +360,7 @@ $(function () {
 
     // Usernames by which the participant will receive "likes"
     // If group member names are changed, these should be changed accordingly.
-    settings.likes_by = ['John', 'AncaD', 'Sarah', 'Arjen', 'Jane', 'George', 'Dan', 'Heather', 'Ky'];
+    settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
   // -------------------
@@ -556,37 +565,43 @@ $(function () {
     reorder();
 
     // When user receives likes
-    $('.userslikes').each(function () {
-      var that = $(this);
-      var usernames = $(this).data('usernames').split(",");
-      var times = $(this).data('likes').split(",");
+    // $('.userslikes').each(function () {
+    //   console.log($(this))
+    //   var that = $(this);
+    //   var usernames = $(this).data('usernames').split(",");
+    //   var times = $(this).data('likes').split(",");
 
-      for (var i = 0; i < times.length; i++) {
-        times[i] = +times[i];
+    //   for (var i = 0; i < times.length; i++) {
+    //     times[i] = +times[i];
 
-        themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
+    //     themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
 
-        setTimeout(function (themsg) {
-          that.text(parseInt(that.text()) + 1);
-          alertify.success(themsg)
+    //     setTimeout(function (themsg) {
+    //       that.text(parseInt(that.text()) + 1);
+    //       alertify.success(themsg)
 
-        }, times[i], themsg);
-      }
-    });
+    //     }, times[i], themsg);
+    //   }
+    // });
 
     // When others receive likes
-    $('.otherslikes').each(function () {
+    $('.otherslikes').each(function (i) {
       var that = $(this);
-      var times = $(this).data('likes').split(",");
 
-      for (var i = 0; i < times.length; i++) {
-        times[i] = +times[i];
+      try{
+        var times = $(this).data('likes').split(",");
+        for (var i = 0; i < times.length; i++) {
+          times[i] = +times[i];
 
-        setTimeout(function () {
-          that.text(parseInt(that.text()) + 1);
-        }, times[i]);
+          setTimeout(function () {
+            that.text(parseInt(that.text()) + 1);
+          }, times[i]);
 
+        }
+      }catch(error){
+        //console.log("No likes found in this iteration: "+ i);
       }
+
     });
 
 
@@ -607,9 +622,8 @@ $(function () {
     $cancelBtn.click(function(){
       window.cancelled = true;
       $('#task').hide();
-      init_imagination_task();
+      init_final_msg();
 
-      //$(window).unbind('beforeunload');
       //redirectToSurvey();
     });
 
@@ -627,15 +641,21 @@ $(function () {
 
       $('#final-continue').on('click', function(){
         $('#task').hide();
-        init_imagination_task();
+        init_final_msg();
+        //redirectToSurvey();
       });
 
     }, window.settings.tasklength); // timing for task
 
   }
 
-  function init_imagination_task() {
-    $('#imagination_task').show();
+  function init_final_msg() {
+    $(window).unbind('beforeunload');
+
+    $('#final_msg').show();
+    $('#submit_final_msg').click(function(){
+      redirectToSurvey();
+    })
   }
 
   function init_regulator_page() {
@@ -825,7 +845,7 @@ $(function () {
 
   // Start with the intro slide
   init_intro();
-  //init_regulator_page();
+  //init_final_msg();
 });
 </script>
 </html>

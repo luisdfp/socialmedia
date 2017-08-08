@@ -63,17 +63,20 @@ If you don't have experience with programming, it is important that you alter on
 You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 
 */ 
---> <h3>Willkommen zu diesem Teil der Studie</h3>
+--> <h3>Willkommen zu dieser Studie</h3>
 
   <br>
-  Als Erstes werden alle Teilnehmer der Studie persönliche "Avatare" <br>
-  auswählen und einen kurzen Text schreiben, um sich selbst vorzustellen.
+  Sie werden zusammen mit anderen Personen, mit denen Sie über das Internet verbunden <br>
+  sein werden, eine Reihe einfacher Aufgaben lösen. 
   <br><br>
-  Im Anschluss haben Sie 3 Minuten, um Zeit mit den anderen Personen zu verbringen. <br>
-  Während dieser Zeit können Sie die kurzen Vorstellungstexte der anderen Personen <br>
-  lesen und mit der Vergabe von „Likes“ darauf reagieren.
+  In einem ersten Schritt werden alle Teilnehmer der Studie persönliche “Avatare” auswählen <br>
+  und einen kurzen Text schreiben, um sich selbst vorzustellen.
+  <br><br> 
+  Bevor Sie mit den Aufgaben beginnen, werden Sie drei Minuten mit den anderen Teilnehmern <br>
+  verbringen. Während dieser Zeit können Sie die kurzen Vorstellungstexte der anderen Teilnehmer <br> 
+  lesen und untereinander darauf reagieren.
   <br><br>
-  Spezifischer Instruktionen werden dann folgen.<br><br><br>
+  Spezifischere Instruktionen werden dann folgen.<br><br><br>
   <button type="submit" id="submit_intro">Weiter</button>
 </div>
 
