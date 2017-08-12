@@ -32,16 +32,16 @@ if(isset($_SESSION["case"])){
 /*Testing*/
 switch($qstr_values['condition']){
     case 1:
-        require("case1.php");
+        require("public/case1.php");
         break;
     case 2:
-        require("case2.php");
+        require("public/case2.php");
         break;
     case 3:
-        require("case3.php");
+        require("public/case3.php");
         break;
     default:
-        require("case1.php");
+        require("public/case1.php");
         break;    
 }
 /*********/
