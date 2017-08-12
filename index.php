@@ -2,6 +2,7 @@
 session_start();
 
 require ('database.php');
+
 $condition_1_path = "case1.php";
 $condition_2_path = "case2.php";
 $condition_3_path = "case3.php";
