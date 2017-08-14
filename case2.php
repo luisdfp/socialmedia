@@ -1,5 +1,9 @@
 <?php
 
+if($_SESSION["assigned_condition"] != 2){
+  header('Location: index.php');
+}
+
 ?>
 
 <html lang="en"><!DOCTYPE html>

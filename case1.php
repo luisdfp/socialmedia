@@ -1,5 +1,9 @@
 <?php
 
+if($_SESSION["assigned_condition"] != 1){
+  header('Location: index.php');
+}
+
 ?>
 
 <html lang="en"><!DOCTYPE html>
@@ -319,6 +323,8 @@ $(function () {
 
     settings.defaultredirect = 'http://localhost:8080/index.php/849925?lang=de';
 
+    settings.storeresulturl = 'store_result.php';
+
 
     // **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
@@ -607,7 +613,7 @@ $(function () {
       //init_imagination_task();
 
       $(window).unbind('beforeunload');
-      redirectToSurvey();
+      submitResults();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
@@ -625,7 +631,7 @@ $(function () {
       $('#final-continue').on('click', function(){
         //$('#task').hide();
         //init_imagination_task();
-        redirectToSurvey();
+        submitResults();
       });
 
     }, window.settings.tasklength); // timing for task
@@ -636,38 +642,48 @@ $(function () {
     $('#imagination_task').show();
   }
 
-  function init_regulator_page() {
-    /*Load the noise blast file*/
-    var sendBtn = $('#send_noise');
-    var slider = $('#noise_intensity').bootstrapSlider();
-    var noise = new Howl({
-      src: ['whitenoise.wav'],
-      volume: slider.bootstrapSlider('getValue') * 0.1
+  function submitResults() {
+    // Redirect link
+
+    var resultData = JSON.stringify({
+      'username': window.username,
+      'description': window.description,
+      'avatar': window.avatarexport,
+      'cancelled': window.cancelled
     });
 
-    noise.on('load', function(){
-      sendBtn.click(function(){
-        noise.play();
-      });
-      slider.on('change', function(e){
-        noise.volume(e.value.newValue * 0.1)
-      })
+    var posting = $.post(settings.storeresulturl, resultData);
+
+    posting.done(function(data){
+      if(data.status == 'success'){
+        alert("Success. Result registered");
+        //redirectToSurvey();
+      }else if(data.status == 'error'){
+        alert("Error on query.");
+      }    
+      
     });
-
-    var tpl = $('#noisevictimtmp').html(),
-      html = Mustache.to_html(tpl, others);
-    $("#noise_victims").append(html);
-
- 
-
-    $('#regulator_page').show();
     
+    posting.fail(function(x,e) {
+      if (x.status==0) {
+          alert('You are offline!!\n Please Check Your Network.');
+      } else if(x.status==404) {
+          alert('Requested URL not found.');
+      } else if(x.status==500) {
+          alert('Internel Server Error.');
+      } else if(e=='parsererror') {
+          alert('Error.\nParsing JSON Request failed.');
+      } else if(e=='timeout'){
+          alert('Request Time out.');
+      } else {
+          alert('Unknow Error.\n'+x.responseText);
+      }
+    });
+
   }
 
-  function redirectToSurvey() {
-    // Redirect link
+  function redirectToSurvey(){
     location.href = window.redirect + '&p=' + window.participant + '&c=' + window.condition + '&cancelled=' + window.cancelled + '&u=' + encodeURI(window.username) + '&av=' + window.avatarexport + '&d=' + encodeURI(window.description);
-
   }
 
   // Get URL parameters to set condition number and participant number
