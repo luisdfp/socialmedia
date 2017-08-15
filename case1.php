@@ -207,36 +207,6 @@ You can edit the instructions text.
 	</div>
 </div>
 
-<div id="regulator_page" style="display:none;" class="instr">
-  <h3>Send a noise blast!</h3>  
-  <p>In this page, you can choose to send a noise blast to one of the other participants.</p>
-  <br/>
-  <div style="display: flex">
-    <div style="flex: 1;">
-      <input
-        id="noise_intensity"
-        type="text"
-        data-slider-orientation="vertical"
-        data-slider-handle="square"
-        data-slider-reversed=true
-        data-slider-max="10"
-        data-slider-min="1"
-        data-slider-step="1"
-        data-slider-tooltip="always"
-      >
-      <br/><br/>
-
-      <button type="submit"  id="send_noise">Send Noise</button>
-    </div>
-    <div style="flex: 3">
-      <div id="noise_victims"></div>
-    </div> 
-  </div>
-  <br/>
-  <button class="pull-right" type="submit"  id="submit_regulator">Fortfahren</button>
-
-</div>
-
 <script type="template/text" id="noisevictimtmp">
   {{#posts}}
     
@@ -323,7 +293,7 @@ $(function () {
 
     settings.defaultredirect = 'http://localhost:8080/index.php/849925?lang=de';
 
-    settings.storeresulturl = 'store_result.php';
+    settings.storeresulturl = 'controllers/store_result.php';
 
 
     // **Tasklength**     
@@ -642,9 +612,7 @@ $(function () {
     $('#imagination_task').show();
   }
 
-  function submitResults() {
-    // Redirect link
-    
+  function submitResults() {    
     var posting = $.post(settings.storeresulturl, {
       username: window.username,
       description: window.description,
@@ -652,37 +620,42 @@ $(function () {
       cancelled: window.cancelled
     });
 
-    posting.done(function(data){
-      console.log(data)
+    posting.done(function(response){
+      var data = JSON.parse(response);
       if(data.status == 'success'){
-        alert("Success. Result registered");
-        //redirectToSurvey();
+        console.log(data);
+        
+        alert(data.msg);
+        redirectToSurvey();
       }else if(data.status == 'error'){
-        alert("Error on query.");
+        console.log(data);
+
+        alert(data.msg);
       }    
       
     });
     
-    posting.fail(function(x,e) {
-      if (x.status==0) {
-          alert('You are offline!!\n Please Check Your Network.');
-      } else if(x.status==404) {
-          alert('Requested URL not found.');
-      } else if(x.status==500) {
-          alert('Internel Server Error.');
-      } else if(e=='parsererror') {
-          alert('Error.\nParsing JSON Request failed.');
-      } else if(e=='timeout'){
-          alert('Request Time out.');
-      } else {
-          alert('Unknow Error.\n'+x.responseText);
-      }
-    });
-
+    posting.fail(httpFailureHandler);
   }
 
   function redirectToSurvey(){
-    location.href = window.redirect + '&p=' + window.participant + '&c=' + window.condition + '&cancelled=' + window.cancelled + '&u=' + encodeURI(window.username) + '&av=' + window.avatarexport + '&d=' + encodeURI(window.description);
+    location.href = window.redirect; 
+  }
+
+  function httpFailureHandler(x,e) {
+    if (x.status==0) {
+        alert('You are offline!!\n Please Check Your Network.');
+    } else if(x.status==404) {
+        alert('Requested URL not found.');
+    } else if(x.status==500) {
+        alert('Internel Server Error.');
+    } else if(e=='parsererror') {
+        alert('Error.\nParsing JSON Request failed.');
+    } else if(e=='timeout'){
+        alert('Request Time out.');
+    } else {
+        alert('Unknow Error.\n'+x.responseText);
+    }
   }
 
   // Get URL parameters to set condition number and participant number

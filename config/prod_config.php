@@ -9,3 +9,5 @@ $username = $dbparts['user'];
 $password = $dbparts['pass'];
 $database = ltrim($dbparts['path'],'/');
 $charset = 'utf8';
+
+$survey_url = getenv('NEXT_SURVEY_URL');
