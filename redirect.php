@@ -7,4 +7,5 @@ if (parse_url($survey_url, PHP_URL_QUERY))
 else
   header("Location: $survey_url?pcode=".$_SESSION['participant_code']);
 
-session_destroy();
+unset($_SESSION['assigned_condition']);
+unset($_SESSION['participant_code']);

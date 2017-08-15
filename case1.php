@@ -291,7 +291,7 @@ $(function () {
     // If the study is called with a parameter for redirection, as explained in the documentation, this value is overwritten. 
     // To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
 
-    settings.defaultredirect = 'http://localhost:8080/index.php/849925?lang=de';
+    settings.defaultredirect = 'redirect.php';
 
     settings.storeresulturl = 'controllers/store_result.php';
 
@@ -624,7 +624,7 @@ $(function () {
       var data = JSON.parse(response);
       if(data.status == 'success'){
         console.log(data);
-        
+
         alert(data.msg);
         redirectToSurvey();
       }else if(data.status == 'error'){
