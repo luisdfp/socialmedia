@@ -644,17 +644,16 @@ $(function () {
 
   function submitResults() {
     // Redirect link
-
-    var resultData = JSON.stringify({
-      'username': window.username,
-      'description': window.description,
-      'avatar': window.avatarexport,
-      'cancelled': window.cancelled
+    
+    var posting = $.post(settings.storeresulturl, {
+      username: window.username,
+      description: window.description,
+      avatar: window.avatarexport,
+      cancelled: window.cancelled
     });
 
-    var posting = $.post(settings.storeresulturl, resultData);
-
     posting.done(function(data){
+      console.log(data)
       if(data.status == 'success'){
         alert("Success. Result registered");
         //redirectToSurvey();

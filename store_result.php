@@ -1,8 +1,7 @@
 <?php
+session_start();
 require ('database.php');
 require ('lib/db_functions.php');
-
-header('Content-Type: application/json; charset=UTF-8');
 
 $condition = $_SESSION['assigned_condition'];
 $participant_code = $_SESSION['participant_code'];
@@ -20,10 +19,12 @@ try{
         "avatar" => $avatar,
         "cancelled" => $cancelled
     ]);
-    if($result)
-        die(json_decode(["status" => "success"]));
-    else
-        die(json_decode(["status" => "error"]));
+    if($result){
+        echo json_encode(["status" => "success"]);
+        session_destroy();
+    }else{
+        echo json_encode(["status" => "error", "msg" => "Query was unsuccessful"]);
+    }         
 }catch(PDOException $e){
-    die(json_decode(["status" => "error"]));
+    die(json_encode(["status" => "error", "msg" => "DB exception occurred"]));
 }
