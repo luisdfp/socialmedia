@@ -8,7 +8,7 @@ $participant_code = $_SESSION['participant_code'];
 $username = $_POST['username'];
 $description = $_POST['description'];
 $avatar = $_POST['avatar'];
-$cancelled = $_POST['cancelled'];
+$cancelled = $_POST['cancelled'] ? 1 : 0;
 
 if($_SESSION['result_submitted']){
     die(json_encode(["status" => "error", "msg" => "This result has already been submitted."]));

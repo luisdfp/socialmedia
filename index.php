@@ -26,7 +26,7 @@ if( !( isset($qstr_values['pcode']) || isset($_SESSION['participant_code']) ) ){
     }else{
         /*Otherwise, determine which condition to assign to the participant*/
         try{
-            $condition = get_condition_with_lowest_count($pdo);
+            $condition = get_next_condition($pdo);
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
             die("Databse error");

@@ -47,6 +47,7 @@ If you don't have experience with programming, it is important that you alter on
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
+<script src="js/functions.js"></script>
 <script src="shortcut.js"></script>
 <!--<script src="main.js"></script>-->
 <script type="text/javascript" src="profiles.json"></script>
@@ -292,9 +293,6 @@ $(function () {
     // To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
 
     settings.defaultredirect = 'redirect.php';
-
-    settings.storeresulturl = 'controllers/store_result.php';
-
 
     // **Tasklength**     
     // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
@@ -583,7 +581,7 @@ $(function () {
       //init_imagination_task();
 
       $(window).unbind('beforeunload');
-      submitResults();
+      finish();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
@@ -601,7 +599,7 @@ $(function () {
       $('#final-continue').on('click', function(){
         //$('#task').hide();
         //init_imagination_task();
-        submitResults();
+        finish();
       });
 
     }, window.settings.tasklength); // timing for task
@@ -612,50 +610,14 @@ $(function () {
     $('#imagination_task').show();
   }
 
-  function submitResults() {    
-    var posting = $.post(settings.storeresulturl, {
+  function finish() {
+    var results = {
       username: window.username,
       description: window.description,
       avatar: window.avatarexport,
       cancelled: window.cancelled
-    });
-
-    posting.done(function(response){
-      var data = JSON.parse(response);
-      if(data.status == 'success'){
-        console.log(data);
-
-        alert(data.msg);
-        redirectToSurvey();
-      }else if(data.status == 'error'){
-        console.log(data);
-
-        alert(data.msg);
-      }    
-      
-    });
-    
-    posting.fail(httpFailureHandler);
-  }
-
-  function redirectToSurvey(){
-    location.href = window.redirect; 
-  }
-
-  function httpFailureHandler(x,e) {
-    if (x.status==0) {
-        alert('You are offline!!\n Please Check Your Network.');
-    } else if(x.status==404) {
-        alert('Requested URL not found.');
-    } else if(x.status==500) {
-        alert('Internel Server Error.');
-    } else if(e=='parsererror') {
-        alert('Error.\nParsing JSON Request failed.');
-    } else if(e=='timeout'){
-        alert('Request Time out.');
-    } else {
-        alert('Unknow Error.\n'+x.responseText);
     }
+    submitResults(results, redirectToSurvey);
   }
 
   // Get URL parameters to set condition number and participant number

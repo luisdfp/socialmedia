@@ -48,6 +48,7 @@ If you don't have experience with programming, it is important that you alter on
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
 <script src="shortcut.js"></script>
+<script src="js/functions.js"></script>
 <!--<script src="main.js"></script>-->
 <script type="text/javascript" src="profiles_case3.json"></script>
 
@@ -658,42 +659,18 @@ $(function () {
 
     $('#final_msg').show();
     $('#submit_final_msg').click(function(){
-      redirectToSurvey();
+      finish();
     })
   }
 
-  function init_regulator_page() {
-    /*Load the noise blast file*/
-    var sendBtn = $('#send_noise');
-    var slider = $('#noise_intensity').bootstrapSlider();
-    var noise = new Howl({
-      src: ['whitenoise.wav'],
-      volume: slider.bootstrapSlider('getValue') * 0.1
-    });
-
-    noise.on('load', function(){
-      sendBtn.click(function(){
-        noise.play();
-      });
-      slider.on('change', function(e){
-        noise.volume(e.value.newValue * 0.1)
-      })
-    });
-
-    var tpl = $('#noisevictimtmp').html(),
-      html = Mustache.to_html(tpl, others);
-    $("#noise_victims").append(html);
-
- 
-
-    $('#regulator_page').show();
-    
-  }
-
-  function redirectToSurvey() {
-    // Redirect link
-    location.href = window.redirect + '&p=' + window.participant + '&c=' + window.condition + '&cancelled=' + window.cancelled + '&u=' + encodeURI(window.username) + '&av=' + window.avatarexport + '&d=' + encodeURI(window.description);
-
+  function finish() {
+    var results = {
+      username: window.username,
+      description: window.description,
+      avatar: window.avatarexport,
+      cancelled: window.cancelled
+    }
+    submitResults(results, redirectToSurvey);
   }
 
   // Get URL parameters to set condition number and participant number
