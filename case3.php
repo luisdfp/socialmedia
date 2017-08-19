@@ -628,14 +628,12 @@ $(function () {
       window.cancelled = true;
       $('#task').hide();
       init_final_msg();
-
-      //redirectToSurvey();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
     setTimeout(function () {
 
-      $(window).unbind('beforeunload');
+      $('.btn-like').prop('disabled', true);         
 
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
@@ -647,7 +645,6 @@ $(function () {
       $('#final-continue').on('click', function(){
         $('#task').hide();
         init_final_msg();
-        //redirectToSurvey();
       });
 
     }, window.settings.tasklength); // timing for task
@@ -655,8 +652,6 @@ $(function () {
   }
 
   function init_final_msg() {
-    $(window).unbind('beforeunload');
-
     $('#final_msg').show();
     $('#submit_final_msg').click(function(){
       finish();
@@ -664,6 +659,7 @@ $(function () {
   }
 
   function finish() {
+    $(window).unbind('beforeunload');
     var results = {
       username: window.username,
       description: window.description,

@@ -577,17 +577,13 @@ $(function () {
 
     $cancelBtn.click(function(){
       window.cancelled = true;
-      //$('#task').hide();
-      //init_imagination_task();
-
-      $(window).unbind('beforeunload');
       finish();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
     setTimeout(function () {
 
-      $(window).unbind('beforeunload');
+      $('.btn-like').prop('disabled', true);      
 
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
@@ -597,8 +593,6 @@ $(function () {
       $('#timer').text('00:00');
 
       $('#final-continue').on('click', function(){
-        //$('#task').hide();
-        //init_imagination_task();
         finish();
       });
 
@@ -611,6 +605,7 @@ $(function () {
   }
 
   function finish() {
+    $(window).unbind('beforeunload');
     var results = {
       username: window.username,
       description: window.description,

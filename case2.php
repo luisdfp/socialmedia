@@ -621,12 +621,12 @@ $(function () {
       window.cancelled = true;
       $('#task').hide();
       init_imagination_task();
-
-      //redirectToSurvey();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function () {      
+    setTimeout(function () {
+
+      $('.btn-like').prop('disabled', true);    
 
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
@@ -645,8 +645,6 @@ $(function () {
   }
 
   function init_imagination_task() {
-    $(window).unbind('beforeunload');
-
     $('#imagination_task').show();
     $('#submit_imagination_task').click(function(){
       finish();
@@ -654,6 +652,7 @@ $(function () {
   }
 
  function finish() {
+    $(window).unbind('beforeunload');
     var results = {
       username: window.username,
       description: window.description,
