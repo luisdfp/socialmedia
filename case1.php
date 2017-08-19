@@ -483,6 +483,7 @@ $(function () {
     jQuery("#countdown").countDown({
       startNumber: window.settings.tasklength / 1000, // in seconds
       callBack: function (me) {
+        $('.btn-like').prop('disabled', true);  
         console.log('over');
         $('#timer').text('00:00');
       }
@@ -576,14 +577,12 @@ $(function () {
     });
 
     $cancelBtn.click(function(){
-      window.cancelled = true;
+      window.cancelled = 1;
       finish();
     });
 
     // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function () {
-
-      $('.btn-like').prop('disabled', true);      
+    setTimeout(function () {          
 
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
@@ -641,7 +640,7 @@ $(function () {
       window.redirect = window.redirect + "?redir=1";
     }
 
-    window.cancelled = false;
+    window.cancelled = 0;
     //alert(window.redirect);
 
   }
