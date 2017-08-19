@@ -26,11 +26,11 @@ function insert_into($pdo, $table, array $key_value)
     $values = "(";
     foreach ($key_value as $key => $val) {
         $columns .= "`$key`, ";
-        $values .= "'$val', ";
+        $values .= ":$key, ";
     }
     $columns = rtrim($columns, ", ") . ")";
     $values = rtrim($values, ", ") . ")";
     $sql .= "$columns VALUES $values;";
     $stmt = $pdo->prepare($sql);    
-    return $stmt->execute();
+    return $stmt->execute($key_value);
 }
