@@ -1,6 +1,10 @@
 <?php 
 session_start();
 
+if($_SESSION['result_submitted']){
+  die("You already participated in this experiment. Thank you.");
+}
+
 require ('database.php');
 require ('lib/utils.php');
 require ('lib/db_functions.php');
@@ -8,6 +12,7 @@ require ('lib/db_functions.php');
 $condition_1_path = "case1.php";
 $condition_2_path = "case2.php";
 $condition_3_path = "case3.php";
+$condition_3_path = "case4.php";
 
 $qstr_values = get_query_string_values($_SERVER['QUERY_STRING']);
 
@@ -45,6 +50,9 @@ if( !( isset($qstr_values['pcode']) || isset($_SESSION['participant_code']) ) ){
             require($condition_2_path);
             break;
         case 3:
+            require($condition_3_path);
+            break;
+        case 4:
             require($condition_3_path);
             break;
         default:
