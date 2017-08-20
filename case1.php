@@ -261,10 +261,6 @@ $(function () {
     settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
-  // -------------------
-  // Above were the basic parameters you can adjust using the instructions. The remaining code is also annotated, but we do not recommend changing it, unless you are comfortable with web programming.
-  // -------------------
-
 
   // **Slide:** **Intro**     
   // With instructions regarding the task. The intro container is shown, the continue calls the next slide when clicked.

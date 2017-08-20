@@ -7,16 +7,6 @@ if($_SESSION["assigned_condition"] != 2){
 ?>
 
 <html lang="en"><!DOCTYPE html>
-
- <!-- 
-/* 
-  
-This document contains all instructions which appear in the paradigm, along with some basic functionality. You can change all text by following the instructions below. 
-
-If you don't have experience with programming, it is important that you alter only the plain text, as indicated in the instructions, and leave any functional elements intact.
-*/ 
---> 
-
 <meta charset="utf-8">
 <title>Condition 2</title>
 
@@ -245,7 +235,7 @@ You can edit the instructions text.
     Versuchen Sie sich diese Person vor ihrem inneren Auge vorzustellen.
   </div>
   <div class="pull-right">
-    <button type="submit" id="submit_imagination_task">Weiter</button>
+    <button disabled type="submit" id="submit_imagination_task">Bitte warten...</button>
   </div>
   
 </div>
@@ -322,58 +312,19 @@ $(function () {
 
   function set_settings() {
     window.settings = [];
-
-    // **Number** **of** **Avatar** **Images**   
-    // Number of avatars the user can choose from. Can be changed to any number, depending on how many avatars you would like to display. Default: 82
-    // The avatar images used in the online preview of the paradigm were created using by pickaface.net and due to their terms not available for redistribution. You should therefore create your own images. All images should be 250x250 pixels in size and carry the names "avatar_NUMBER.png" (e.g. avatar_1.png; "png" should be lower case; the numbers in the names should be consequtive, starting from 1). The number of avatars dependeds on the corresponding parameter. The images should be placed in folder "avatars," located in the main study folder extracted on your computer or server.
-
     settings.numberofavatars = 15;
-
-
-    // **Redirection**    
-    // After the introduction task is over participants should be redirected to a survey with manipulation checks and dependent measures, to subsequent tasks, or to further instructions. 
-    // If the study is called with a parameter for redirection, as explained in the documentation, this value is overwritten. 
-    // To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
-
     settings.defaultredirect = 'http://localhost:8080/index.php/849925?lang=de';
-
-
-    // **Tasklength**     
-    // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
     settings.tasklength = 180000; 
-    //settings.tasklength = 10000;
-
-    // **Number** **of** **"likes"**    
-    // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
-    // In cases with only 1 "like," a second "like" is added with time point 9999999. This "like" is added for programming purposes and is never executed, as it is outside the task time
-
-    // In condition 1, the participant will receive 1 like at the following timepoint (in ms). Default: [12000, 9999999]
     settings.condition_1_likes = [12000, 9999999];
-
-    // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
     settings.condition_2_likes = [10000, 15000, 35000, 80000, 1320000, 150000];
-
-    // In condition 3, user will receive 9 likes at the following timepoints (in ms). Default: [10000, 11000,15000,35000,80000,100000,110000,150000,20000]
     settings.condition_3_likes = [10000, 11000, 15000, 35000, 80000, 100000, 110000, 150000, 20000];
-
-    // **Others' likes**     
-    // To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 5 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
     settings.condition_1_adjusted_likes = [12000, 14000, 15000, 35000, 80000, 100000, 110000, 150000, 20000]; // 9
     settings.condition_2_adjusted_likes = [12000, 14000, 15000, 35000, 80000]; // 5
     settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
-
-    // Usernames by which the participant will receive "likes"
-    // If group member names are changed, these should be changed accordingly.
     settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
-  // -------------------
-  // Above were the basic parameters you can adjust using the instructions. The remaining code is also annotated, but we do not recommend changing it, unless you are comfortable with web programming.
-  // -------------------
-
-
   // **Slide:** **Intro**     
-  // With instructions regarding the task. The intro container is shown, the continue calls the next slide when clicked.
   function init_intro() {
     $('#intro').show();
     $('#submit_intro').on('click', function () {
@@ -385,7 +336,6 @@ $(function () {
 
   // **Slide:** **Username**       
   // Note: Only alphanumeric usernames without spaces are accepted
-
   function init_name() {
 
     $('#name').show();
@@ -419,7 +369,6 @@ $(function () {
   }
 
   // **Slide:** **Avatar**       
-  // Avatar slide in which the participant is asked to select an avatar
 
   function init_avatar() {
     $('#avatar').show();
@@ -498,7 +447,6 @@ $(function () {
 
 
   // **Slide:** **Login** **Screen**   
-  // Participant can continue after 8000ms = 8s      
   function init_fb_login() {
     $('#fb_login').show();
 
@@ -638,6 +586,12 @@ $(function () {
 
   function init_imagination_task() {
     $('#imagination_task').show();
+    //Enable button after 8 seconds
+    setTimeout(function() {
+      $('#submit_imagination_task').prop("disabled", false); 
+      $('#submit_imagination_task').html("Weiter");    
+    }, 8000);
+    
     $('#submit_imagination_task').click(function(){
       finish();
     })
@@ -684,11 +638,7 @@ $(function () {
   }
 
 
-  // adjustments according to current condition
   function adjust_to_condition() {
-
-    // the number of likes a person receives depends on the condition
-    // in addition, the number of likes another person receives is adjusted, so that there is the same number of likes overall
     switch (condition) {
       case 1:
         window.settings.condition_likes = settings.condition_1_likes;
@@ -805,7 +755,6 @@ $(function () {
 
   // Start with the intro slide
   init_intro();
-  //init_imagination_task();
 });
 </script>
 </html>
