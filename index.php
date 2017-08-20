@@ -12,7 +12,7 @@ require ('lib/db_functions.php');
 $condition_1_path = "case1.php";
 $condition_2_path = "case2.php";
 $condition_3_path = "case3.php";
-$condition_3_path = "case4.php";
+$condition_4_path = "case4.php";
 
 $qstr_values = get_query_string_values($_SERVER['QUERY_STRING']);
 
@@ -53,27 +53,7 @@ if( !( isset($qstr_values['pcode']) || isset($_SESSION['participant_code']) ) ){
             require($condition_3_path);
             break;
         case 4:
-            require($condition_3_path);
-            break;
-        default:
-            require($condition_1_path);
-            break;    
+            require($condition_4_path);
+            break; 
     }
 }
-
-/*Testing*/
-// switch($qstr_values['condition']){
-//     case 1:
-//         require($condition_1_path);
-//         break;
-//     case 2:
-//         require($condition_2_path);
-//         break;
-//     case 3:
-//         require($condition_3_path);
-//         break;
-//     default:
-//         require($condition_1_path);
-//         break;    
-// }
-/*********/

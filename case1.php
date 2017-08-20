@@ -7,16 +7,6 @@ if($_SESSION["assigned_condition"] != 1){
 ?>
 
 <html lang="en"><!DOCTYPE html>
-
- <!-- 
-/* 
-  
-This document contains all instructions which appear in the paradigm, along with some basic functionality. You can change all text by following the instructions below. 
-
-If you don't have experience with programming, it is important that you alter only the plain text, as indicated in the instructions, and leave any functional elements intact.
-*/ 
---> 
-
 <meta charset="utf-8">
 <title>Condition 1</title>
 
@@ -89,12 +79,8 @@ You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 
 <div id="name" style="display:none;" class="instr">
 <!-- 
-/* 
-  
+/*   
 **Username**
----------
-You can edit the instructions text for entering usernames below.
-
 */ 
 -->
 	<h3>Bitte tragen Sie hier ihren Namen ein</h3>
@@ -108,12 +94,8 @@ You can edit the instructions text for entering usernames below.
 
 <div id="avatar" style="display:none;">	
 <!-- 
-/* 
-  
+/*   
 **Avatar choice**
----------
-You can edit the instructions text. The text "Your choice of avatar will not be recorded or analyzed" depends on whether you record the choice of avatar.
-
 */ 
 -->	<h3>Bitte wählen Sie einen Avatar aus</h3>
 	Dieser Avatar wird Sie nachfolgend repräsentieren, jedoch nicht mit ihren Antworten in Verbindung gebracht. <br>
@@ -127,12 +109,8 @@ You can edit the instructions text. The text "Your choice of avatar will not be 
 
 <div id="text" style="display:none;" class="instr">	
 <!-- 
-/* 
-  
+/*   
 **Description entry**
----------
-You can edit the instructions text. 
-
 */ 
 -->	<h3>Bitte stellen Sie sich vor</h3>
   Bitte schreiben Sie einen Absatz, in dem Sie sich selbst dem Rest der Gruppe vorstellen. <br> 
@@ -148,12 +126,8 @@ You can edit the instructions text.
 
 <div id="fb_intro" style="display:none;" class="instr">
 <!-- 
-/* 
-  
+/*   
 **Task instructions**
----------
-You can edit the instructions text. The prompt to try and form an impression of the other players is recommended in all ostacism paradigms. Defining the action of "liking" is also recommended. The information regarding task duration can be adjusted to match the actual duration you have set.
-
 */ 
 -->  <h3>Hinweise für die Gruppe</h3>
   Kurz nachdem eine Verbindung aufgebaut wurde, sollten Sie die Beschreibungen<br>
@@ -193,11 +167,7 @@ You can edit the instructions text. The prompt to try and form an impression of 
 
 <!-- 
 /* 
-  
 **In-task instructions and timer**
----------
-You can edit the instructions text. 
-
 */ 
 -->
 <div id="task" style="display:none;">
@@ -279,48 +249,15 @@ $(function () {
 
   function set_settings() {
     window.settings = [];
-
-    // **Number** **of** **Avatar** **Images**   
-    // Number of avatars the user can choose from. Can be changed to any number, depending on how many avatars you would like to display. Default: 82
-    // The avatar images used in the online preview of the paradigm were created using by pickaface.net and due to their terms not available for redistribution. You should therefore create your own images. All images should be 250x250 pixels in size and carry the names "avatar_NUMBER.png" (e.g. avatar_1.png; "png" should be lower case; the numbers in the names should be consequtive, starting from 1). The number of avatars dependeds on the corresponding parameter. The images should be placed in folder "avatars," located in the main study folder extracted on your computer or server.
-
     settings.numberofavatars = 15;
-
-
-    // **Redirection**    
-    // After the introduction task is over participants should be redirected to a survey with manipulation checks and dependent measures, to subsequent tasks, or to further instructions. 
-    // If the study is called with a parameter for redirection, as explained in the documentation, this value is overwritten. 
-    // To the redirect link, the following information will be appended: (1) participant number, (2) condition, (3) username, (4) description submitted by participant. These variables can be extracted from the link, saved as data, and used for linking the Social Media Ostracism paradigm to subsequent tasks and measures. See documentation for more details.
-
     settings.defaultredirect = 'redirect.php';
-
-    // **Tasklength**     
-    // Length of the group introduction task in milliseconds. Can be changed to any number (in ms). Default: 180000 (3min) 
     settings.tasklength = 180000; 
-    //settings.tasklength = 10000; /*for testing*/
-
-    // **Number** **of** **"likes"**    
-    // Each received "like" is indicated by the timepoint (in ms) at which the "like" will appear. To change the number of "likes" in each condition, add or remove timepoints. Make sure that every timepoint (except the first) is preceded by a single comma. 
-    // In cases with only 1 "like," a second "like" is added with time point 9999999. This "like" is added for programming purposes and is never executed, as it is outside the task time
-
-    // In condition 1, the participant will receive 1 like at the following timepoint (in ms). Default: [12000, 9999999]
-    //settings.condition_1_likes = [12000, 9999999];
     settings.condition_1_likes = [9999999, 9999999];
-
-    // In condition 2, user will receive 6 likes at the following timepoints (in ms). Default: [10000, 15000,35000,80000,1320000,150000]
     settings.condition_2_likes = [10000, 15000, 35000, 80000, 1320000, 150000];
-
-    // In condition 3, user will receive 9 likes at the following timepoints (in ms). Default: [10000, 11000,15000,35000,80000,100000,110000,150000,20000]
     settings.condition_3_likes = [10000, 11000, 15000, 35000, 80000, 100000, 110000, 150000, 20000];
-
-    // **Others' likes**     
-    // To keep the total distribution of "likes" constant across conditions, The "likes" received by one group member can be adjusted according to the participant's. By default, the other group member receives 9 "likes" in the participant-ostracism condition, 5 in the participant-inclusion condtion, and 1 in the participant-overinclusion condtion.
     settings.condition_1_adjusted_likes = [12000, 14000, 15000, 35000, 80000, 100000, 110000, 150000, 20000]; // 9
     settings.condition_2_adjusted_likes = [12000, 14000, 15000, 35000, 80000]; // 5
     settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
-
-    // Usernames by which the participant will receive "likes"
-    // If group member names are changed, these should be changed accordingly.
     settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
   }
 
@@ -482,11 +419,7 @@ $(function () {
 
     jQuery("#countdown").countDown({
       startNumber: window.settings.tasklength / 1000, // in seconds
-      callBack: function (me) {
-        $('.btn-like').prop('disabled', true);  
-        console.log('over');
-        $('#timer').text('00:00');
-      }
+      callBack: onTaskEnd
     });
 
     users = {
@@ -581,21 +514,18 @@ $(function () {
       finish();
     });
 
-    // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function () {          
-
+    function onTaskEnd() {       
+      console.log('over');
+      
+      $('.btn-like').prop('disabled', true); 
+      $('#timer').text('00:00');
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
-
       $('#final-continue').show();
-
-      $('#timer').text('00:00');
-
       $('#final-continue').on('click', function(){
         finish();
       });
-
-    }, window.settings.tasklength); // timing for task
+    }
 
   }
 

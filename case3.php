@@ -526,11 +526,7 @@ $(function () {
 
     jQuery("#countdown").countDown({
       startNumber: window.settings.tasklength / 1000, // in seconds
-      callBack: function (me) {
-        $('.btn-like').prop('disabled', true);  
-        console.log('over');
-        $('#timer').text('00:00');
-      }
+      callBack: onTaskEnd
     });
 
     users = {
@@ -632,21 +628,19 @@ $(function () {
     });
 
     // Redirect, default after 180000ms = 180s = 3min
-    setTimeout(function () {             
-
+    function onTaskEnd() {       
+      console.log('over');
+      
+      $('.btn-like').prop('disabled', true); 
+      $('#timer').text('00:00');
       $cancelBtn.hide();
       $cancelBtn.unbind("click");
-
       $('#final-continue').show();
-
-      $('#timer').text('00:00');
-
       $('#final-continue').on('click', function(){
         $('#task').hide();
         init_final_msg();
       });
-
-    }, window.settings.tasklength); // timing for task
+    }
 
   }
 
