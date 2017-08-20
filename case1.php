@@ -173,7 +173,7 @@ You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 <div id="task" style="display:none;">
 	<div id="countdown"><span class="secs" style="display: none;"></span>Sie können die "Like" taste drücken, wenn Ihnen die beschreibung einer Person gefallen hat.<br><br>Verbleibende Zeit:<br><span id="timer" class="cntr label label-info"></span>
 	<br><br>
-  <button type="submit" class="btn btn-danger" id="abbruch"><i class="icon-stop icon-white"></i> Abbruch</button>
+  <!--<button type="submit" class="btn btn-danger" id="abbruch"><i class="icon-stop icon-white"></i> Abbruch</button>-->
 	<button type="submit" class="btn btn-info" id="final-continue" style="display:none;">Fortfahren</button>	
 	</div>
 </div>
