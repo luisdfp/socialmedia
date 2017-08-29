@@ -37,7 +37,6 @@ if($_SESSION["assigned_condition"] != 3){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/2.1.08/jquery.masonry.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
 <script src="shortcut.js"></script>
 <script src="js/functions.js"></script>
 <!--<script src="main.js"></script>-->
@@ -228,21 +227,6 @@ if($_SESSION["assigned_condition"] != 3){
 
 </div>
 
-<script type="template/text" id="noisevictimtmp">
-  {{#posts}}
-    
-    <div class="well noisevictim">
-
-        <img src="{{avatar}}" class="avatar">
-        <h3 style="text-align: center">{{username}}</h3>
-
-        <br style="clear:both;">
-
-    </div>
-
-  {{/posts}}  
-</script>
-
 <script type="template/text" id="usertmp">
   {{#posts}}
     
@@ -308,11 +292,11 @@ $(function () {
 
     settings.condition_3_likes = [10000, 11000, 15000, 35000, 80000, 100000, 110000, 150000, 20000];
 
-    settings.condition_1_adjusted_likes = [12000, 14000, 15000, 35000, 80000, 100000, 110000, 150000, 20000]; // 9
+    settings.condition_1_adjusted_likes = 0 // 9
     settings.condition_2_adjusted_likes = [12000, 14000, 15000, 35000, 80000]; // 5
     settings.condition_3_adjusted_likes = [12000, 9999999]; //1	
 
-    settings.likes_by = ['Christopher', 'Harit', 'Sarah', 'Felix', 'Davina', 'Max', 'Niklas', 'Florian', 'Ky'];
+    settings.likes_by = [];
   }
 
   // **Slide:** **Intro**     
@@ -505,24 +489,23 @@ $(function () {
     reorder();
 
     // When user receives likes
-    // $('.userslikes').each(function () {
-    //   console.log($(this))
-    //   var that = $(this);
-    //   var usernames = $(this).data('usernames').split(",");
-    //   var times = $(this).data('likes').split(",");
+    $('.userslikes').each(function () {
+      var that = $(this);
+      var usernames = $(this).data('usernames').split(",");
+      var times = $(this).data('likes').split(",");
 
-    //   for (var i = 0; i < times.length; i++) {
-    //     times[i] = +times[i];
+      for (var i = 0; i < times.length; i++) {
+        times[i] = +times[i];
 
-    //     themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
+        themsg = usernames[i] + " hat deinen Beitrag mit einem “Like” versehen";
 
-    //     setTimeout(function (themsg) {
-    //       that.text(parseInt(that.text()) + 1);
-    //       alertify.success(themsg)
+        setTimeout(function (themsg) {
+          that.text(parseInt(that.text()) + 1);
+          alertify.success(themsg)
 
-    //     }, times[i], themsg);
-    //   }
-    // });
+        }, times[i], themsg);
+      }
+    });
 
     // When others receive likes
     $('.otherslikes').each(function (i) {
@@ -539,7 +522,7 @@ $(function () {
 
         }
       }catch(error){
-        //console.log("No likes found in this iteration: "+ i);
+        console.log("No likes found in this iteration: "+ i);
       }
 
     });

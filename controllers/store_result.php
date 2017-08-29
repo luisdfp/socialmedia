@@ -29,7 +29,7 @@ if($_SESSION['result_submitted']){
             echo json_encode(["status" => "error", "msg" => "Query was unsuccessful"]);
         }         
     }catch(PDOException $e){
-        die(json_encode(["status" => "error", "msg" => "DB exception occurred"]));
+        die(json_encode(["status" => "error", "msg" => "DB exception occurred: ".$e]));
     }
 }
 
