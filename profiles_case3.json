@@ -7,13 +7,13 @@ window.others = {
         "avatar": "avatars/others/Max.png",
         "username": "Max",
         "text": "Hallo zusammen, ich heiße Max, bin 21 Jahre alt und komme aus Berlin. Derzeit mache ich eine Ausbildung zum Bankkaufmann und überlege, Finanzmanagement zu studieren. In meiner Frezizeit gehe ich gerne Bouldern und mit meinem Hund Jinny in die Natur.",
-        "likes": 0 //4
+        "likes": [12000, 14000,15000,35000,80000,100000,110000,150000,20000] //9
       },
       {
         "avatar": "avatars/others/sunshine.png",
         "username": "sunshine",
         "text": "Hi ich bin Sarah. Ich habe eine kleine Tochter, die mich täglich auf Trab hält und wir bekommen derzeit unser zweites Kind. Nebenbei studiere ich Kunstgeschichte und habe derzeit viele kleine Projekte sowie Veranstaltungen, die ich besuche. Wann immer sich die Zeit findet, besuchen wir unser kleines Ferienhaus in der Toskana. Dann genieße ich einfach das Meer und die kleine Auszeit mit der Familie.",
-        "likes": [12000, 14000,15000,35000,80000,100000,110000,150000,20000] //9
+        "likes": 0 //4
       },
       {
         "avatar": "avatars/others/christopher.png",

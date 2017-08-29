@@ -514,7 +514,7 @@ $(function () {
     reorder();
 
     // When user receives likes
-    $('.userslikes').each(function () {
+/*    $('.userslikes').each(function () {
       var that = $(this);
       var usernames = $(this).data('usernames').split(",");
       var times = $(this).data('likes').split(",");
@@ -530,7 +530,7 @@ $(function () {
 
         }, times[i], themsg);
       }
-    });
+    });*/
 
     // When others receive likes
     $('.otherslikes').each(function () {
@@ -590,7 +590,7 @@ $(function () {
     setTimeout(function() {
       $('#submit_imagination_task').prop("disabled", false); 
       $('#submit_imagination_task').html("Weiter");    
-    }, 8000);
+    }, 20000);
     
     $('#submit_imagination_task').click(function(){
       finish();

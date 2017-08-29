@@ -14,7 +14,7 @@ if(isset($qstr_values['condition'])){
 /*********************************************/
 
 if($_SESSION['result_submitted']){
-  die("Ihr habt gerade in dieser Untersuchung teilgenommen. Danke.");
+  die("Sie haben bereits an dieser Studie teilgenommen. Danke.");
 }
 
 require ('database.php');
@@ -27,7 +27,7 @@ $condition_4_path = "case4.php";
 
 /*Participant code must be provided either via query string or previously set session*/
 if( !( isset($qstr_values['pcode']) || isset($_SESSION['participant_code']) ) ){
-    die("No participant code provided");
+    die("No participant code provided.");
 }else{
     /*If the participant code was provided via query string, set it in the session so it is remembered*/
     if(isset($qstr_values['pcode']))

@@ -188,7 +188,7 @@ if($_SESSION["assigned_condition"] != 3){
 <div id="final_msg" class="instr" style="display:none;">
   <div class="well">
     <h3>Gruppen für Teamarbeit</h3>
-    Sie und Max haben keine Likes von den anderen Personen bekommen, sodass Sie für die spätere <br/>
+    Sie und sunshine haben keine Likes von den anderen Personen bekommen, sodass Sie für die spätere <br/>
     Gruppenaufgabe als Zweierteam zusammenarbeiten werden. 
     <br/><br/>
   </div>
