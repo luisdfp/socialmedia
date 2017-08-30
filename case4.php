@@ -40,7 +40,7 @@ if($_SESSION["assigned_condition"] != 4){
 <script src="shortcut.js"></script>
 <script src="js/functions.js"></script>
 <!--<script src="main.js"></script>-->
-<script type="text/javascript" src="profiles_case4.json"></script>
+<script type="text/javascript" src="profiles_case4.json?t=<?= time();?>"></script>
 
 </head>
 

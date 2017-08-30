@@ -52,6 +52,7 @@ if(isset($_SESSION["assigned_condition"])){
 }
 
 if($condition){
+
     /*Show the corresponding condition template*/
     switch($condition){
         case 1:

@@ -39,7 +39,7 @@ if($_SESSION["assigned_condition"] != 1){
 <script src="js/functions.js"></script>
 <script src="shortcut.js"></script>
 <!--<script src="main.js"></script>-->
-<script type="text/javascript" src="profiles.json"></script>
+<script type="text/javascript" src="profiles.json?t=<?= time();?>"></script>
 
 </head>
 
