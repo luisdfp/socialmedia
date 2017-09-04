@@ -60,7 +60,7 @@ window.others = {
       {
         "avatar": "avatars/others/TL.png",
         "username": "TL",
-        "text": "Ich bin gerade dabei mein Medizinstudium abzuschließen. Zudem arbeite ich als Teilzeitangestellte in einem Forscherteam. Ich freue mich, das Studium bald abschließen zu könenn und bin mir noch unschlüssig, ob ich mich nicht Richtung Forschung spezialisieren möchte.",
+        "text": "Ich bin gerade dabei mein Medizinstudium abzuschließen. Zudem arbeite ich als Teilzeitangestellter in einem Forscherteam. Ich freue mich, das Studium bald abschließen zu könenn und bin mir noch unschlüssig, ob ich mich nicht Richtung Forschung spezialisieren möchte.",
         "likes": [13000, 50000, 80000, 88000, 120000] //5
       },
       {
