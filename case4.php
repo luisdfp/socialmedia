@@ -297,7 +297,7 @@ $(function () {
 
   function set_settings() {
     window.settings = [];
-    settings.numberofavatars = 15;
+    settings.numberofavatars = 90;
     settings.defaultredirect = 'http://localhost:8080/index.php/849925?lang=de';
     settings.tasklength = 180000; 
     settings.condition_1_likes = [12000, 33000, 58000, 100000, 160000, 9999999];
