@@ -4,67 +4,67 @@
 window.others = {
   "posts" : [
       {
-        "avatar": "avatars/others/Max.png",
+        "avatar": "avatars/others/_Max.png",
         "username": "Max",
         "text": "Hallo zusammen, ich heiße Max, bin 21 Jahre alt und komme aus Berlin. Derzeit mache ich eine Ausbildung zum Bankkaufmann und überlege, Finanzmanagement zu studieren. In meiner Frezizeit gehe ich gerne Bouldern und mit meinem Hund Jinny in die Natur.",
         "likes": [45000, 50000, 110000, 150000] //4
       },
       {
-        "avatar": "avatars/others/sunshine.png",
+        "avatar": "avatars/others/_sunshine.png",
         "username": "sunshine",
         "text": "Hi ich bin Sarah. Ich habe eine kleine Tochter, die mich täglich auf Trab hält und wir bekommen derzeit unser zweites Kind. Nebenbei studiere ich Kunstgeschichte und habe derzeit viele kleine Projekte sowie Veranstaltungen, die ich besuche. Wann immer sich die Zeit findet, besuchen wir unser kleines Ferienhaus in der Toskana. Dann genieße ich einfach das Meer und die kleine Auszeit mit der Familie.",
         "likes": [12000, 14000,15000,35000,80000] //5
       },
       {
-        "avatar": "avatars/others/christopher.png",
+        "avatar": "avatars/others/_christopher.png",
         "username": "Christopher",
         "text": "Hi. Ich bin Christopher. Ich arbeite seit mehreren Jahren in einem kleinen Unternehmen als Sales Manager. Mein größtes Hobby ist das Segelfliegen. Wann immer ich Zeit habe und die Thermik mitspielt starte ich einen Flug. Zudem reise ich gerne gemeinsam mit meiner Freundin und wir bringen verschiedene Rezepte aus verschiedenen Ländern der Welt in unsere Küche.",
 		    "likes": [20000, 21000] //2
       },
       {
-        "avatar": "avatars/others/Harit.png",
+        "avatar": "avatars/others/_Harit.png",
         "username": "Harit",
         "text": "Ich bin ein Informatikstudent und Web-Enthusiast. Interessiert habe ich mich dafür eigentlich schon immer. Zudem liebe ich die Berliner Elektroszene.",
         "likes": [10000, 12000, 40000, 80000, 120000] //5
       },
       {
-        "avatar": "avatars/others/nik.png",
+        "avatar": "avatars/others/_nik.png",
         "username": "nik",
         "text": "Mein Leben dreht sich ums Klettern. Als ich 12 war, habe ich damit angefangen und klettere normalerweise für 4-5 Stunden am Tag. Klettern langweilt mich nie, weil jedes mal anders ist - die Routen, das Wetter, meine Kraft und meine Ausdauer. Es ist großartig!",
         "likes": [40000, 450000, 90000, 100000, 150000, 160000] //6
       },
     {
-        "avatar": "avatars/others/dn.png",
+        "avatar": "avatars/others/_dn.png",
         "username": "dn",
         "text": "Ich bin Davina, ich liebe es mit Freunden abzuhängen und gemeinsam Serien zu gucken. Früher war ich Leistungsschwimmerin und trainiere jetzt eine eigene Jugendgruppe",
         "likes": [20000, 25000, 95000] //3
       },
       {
-        "avatar": "avatars/others/maria.png",
+        "avatar": "avatars/others/_maria.png",
         "username": "Maria",
         "text": "Ich heiße Maria und ich bin 49 Jahre alt. Ich habe einen Ehemann und zwei erwachsene Söhne. Mein Mann und ich leben und arbeiten in Berlin. Einer meiner Söhne ist vor ein paar Jahren nach Australien ausgewandert. Er hat dort seine eigene kleine Familie gegründet und wir besuchen ihn so oft wir können. Am liebsten mag ich die Familienfeste, bei denen alle zusammen sind und ich meine kleine Enkelin sehe. Dabei bin ich immer wieder erstaunt, wie schnell sie sich entwickelt. Zudem engagieren wir uns für verschiedene soziale Projekte",
         "likes": [12000, 38000, 53000] //3
       },
           {
-        "avatar": "avatars/others/Ky.png",
+        "avatar": "avatars/others/_Ky.png",
         "username": "Ky",
         "text": "Hey Leute. Ich bin 27 und vor vier Jahren aus Vietnam nach Deutschlang gezogen. Ich habe mittlerweile viele Freunde hier. Doing some bike tours on the weekends together or hanging out at some nice places in Berlin. Manchmal vermisse ich meine Familie und besonders meine Schwester in Vietnam. Ich mag Online Games und koche gelegentlich für meine Freunde (real Vietnam Style)",
         "likes": [10000, 50000, 88000, 110000, 115000, 120000, 150000] //7
       },
       {
-        "avatar": "avatars/others/felix.png",
+        "avatar": "avatars/others/_felix.png",
         "username": "Felix",
         "text": "Ich heiße Felix und studiere künstliche Intelligenz. Ich meiner Freizeit spiele ich vor allem Online Games, oder lese Bücher über Psychologie.",
         "likes": [12000, 40000, 120000] //3
       },
       {
-        "avatar": "avatars/others/TL.png",
+        "avatar": "avatars/others/_TL.png",
         "username": "TL",
         "text": "Ich bin gerade dabei mein Medizinstudium abzuschließen. Zudem arbeite ich als Teilzeitangestellter in einem Forscherteam. Ich freue mich, das Studium bald abschließen zu könenn und bin mir noch unschlüssig, ob ich mich nicht Richtung Forschung spezialisieren möchte.",
         "likes": [13000, 120000] //2
       },
       {
-        "avatar": "avatars/others/Natalie.png",
+        "avatar": "avatars/others/_Natalie.png",
         "username": "Natalie",
         "text": "Liebe alle, ich heiße Natalie und habe morgen ein wichtiges Vorstellungsgespräch. Das ist alles worüber ich gerade nachdenken kann. Und hoffe mich hiermit ein bisschen ablenken zu können ;).",
         "likes": [10000, 30000, 50000, 84000, 120000] //5
