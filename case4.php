@@ -138,7 +138,7 @@ if($_SESSION["assigned_condition"] != 4){
   der anderen Personen sehen können.<br>
   Sie können die kurzen Texte, welche die Personen über sich selbst geschrieben<br>
   haben, lesen und darauf reagieren, indem sie die "Like" Taste, die der "Like" Taste<br>
-  auf Facebook ähnelt ("favorite" auf Twitter, &hearts; auf Tumblr und Instagram, etc.), drücken.<br>
+  auf Facebook ähnelt ("favorite" auf Twitter, &hearts; auf Tumblr und Instagram, etc.), anklicken.<br>
   <br>
   Auch wenn es nur eine kurze Interaktion ist, versuchen Sie bitte einen Eindruck<br>
   von den anderen Personen in der Gruppe zu gewinnen. Versuchen Sie sich diese<br>
