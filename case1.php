@@ -132,8 +132,8 @@ You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
   Kurz nachdem eine Verbindung aufgebaut wurde, sollten Sie die Beschreibungen<br>
   der anderen Personen sehen können.<br>
   Sie können die kurzen Texte, welche die Personen über sich selbst geschrieben<br>
-  haben, lesen und darauf reagieren, indem sie die "like" Taste, die der "like" Taste<br>
-  auf Facebook ähnelt ("favorite" auf Twitter, &hearts; auf Tumblr und Instagram, etc.)<br>
+  haben, lesen und darauf reagieren, indem sie die "Like" Taste, die der "Like" Taste<br>
+  auf Facebook ähnelt ("favorite" auf Twitter, &hearts; auf Tumblr und Instagram, etc.), drücken.<br>
   <br>
   Auch wenn es nur eine kurze Interaktion ist, versuchen Sie bitte einen Eindruck<br>
   von den anderen Personen in der Gruppe zu gewinnen. Versuchen Sie sich diese<br>
@@ -170,7 +170,7 @@ You can edit this text using basic HTML elements for styling (e.g., <br>, <h3>).
 */ 
 -->
 <div id="task" style="display:none;">
-	<div id="countdown"><span class="secs" style="display: none;"></span>Sie können die "Like" taste drücken, wenn Ihnen die beschreibung einer Person gefallen hat.<br><br>Verbleibende Zeit:<br><span id="timer" class="cntr label label-info"></span>
+	<div id="countdown"><span class="secs" style="display: none;"></span>Sie können die "Like" Taste drücken, wenn Ihnen die Beschreibung einer Person gefallen hat.<br><br>Verbleibende Zeit:<br><span id="timer" class="cntr label label-info"></span>
 	<br><br>
   <!--<button type="submit" class="btn btn-danger" id="abbruch"><i class="icon-stop icon-white"></i> Abbruch</button>-->
 	<button type="submit" class="btn btn-info" id="final-continue" style="display:none;">Fortfahren</button>	
